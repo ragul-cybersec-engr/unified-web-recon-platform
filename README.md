@@ -153,7 +153,7 @@ web-recon/
 ```bash
 # 1. Clone the repository
 git clone https://github.com/ragul-cybersec-engr/unified-web-recon-platform.git
-cd unified-web-recon-platform/web-recon
+cd unified-web-recon-platform
 
 # 2. Stop any old containers
 docker compose down --remove-orphans
