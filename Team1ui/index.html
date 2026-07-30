@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0284c7" />
+    <title>Web-Recon - Scan Dashboard</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-brand">
+          <div class="header-brand-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          Web-Recon
+        </div>
+        <div class="header-actions">
+          <nav class="top-nav">
+            <a href="./index.html" class="top-nav-link active">Scan Dashboard</a>
+            <a href="./history.html" class="top-nav-link">History & Downloads</a>
+          </nav>
+          <span class="header-user" id="header-user"></span>
+          <button class="btn btn-ghost btn-sm" id="logout-btn" aria-label="Sign out">
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container page-wrapper">
+      <div class="page-title-group">
+        <h2>Scan Dashboard</h2>
+        <p>Initiate domain or extended scans and monitor active jobs.</p>
+      </div>
+
+      <div class="grid-2-3">
+        <div class="card">
+          <div class="card-header">
+            <h3>Start New Scan</h3>
+            <p>Organization names can include spaces (example: Recon scan info)</p>
+          </div>
+          <div class="card-body">
+            <form id="recon-form">
+              <div class="form-group">
+                <label for="orgname" class="form-label">Organization Name</label>
+                <input
+                  type="text"
+                  id="orgname"
+                  class="form-input"
+                  placeholder="e.g. Recon scan info"
+                  required
+                />
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Scan Mode</label>
+                <div class="scan-mode-switch">
+                  <label class="scan-mode-item">
+                    <input type="radio" name="scan_type" value="domain" />
+                    <span>Domain Scan (Subdomains Only)</span>
+                  </label>
+                  <label class="scan-mode-item">
+                    <input type="radio" name="scan_type" value="extended" checked />
+                    <span>Extended Scan (Subdomains + Ports + Live)</span>
+                  </label>
+                </div>
+                <p class="scan-mode-note" id="scan-mode-note">
+                  Extended scan is recommended when you need open ports and live hosts.
+                </p>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">Domains</label>
+                <div class="domain-inputs" id="domain-inputs">
+                  <div class="domain-row">
+                    <input
+                      type="text"
+                      class="form-input domain-input"
+                      placeholder="e.g. example.com not -http://example.com"
+                      required
+                    />
+                  </div>
+                </div>
+                <button
+                  type="button"
+                  class="btn btn-secondary btn-sm"
+                  id="add-domain-btn"
+                  style="margin-top: 8px"
+                >
+                  Add Domain
+                </button>
+              </div>
+
+              <button
+                type="submit"
+                class="btn btn-primary btn-full"
+                id="recon-submit-btn"
+              >
+                <span id="recon-btn-text">Start Scan</span>
+                <span id="recon-btn-spinner" class="spinner" style="display: none"></span>
+              </button>
+            </form>
+          </div>
+        </div>
+
+        <div class="card">
+          <div class="card-header">
+            <h3>Active Scans</h3>
+            <p>Queued and running scans</p>
+          </div>
+          <div class="card-body">
+            <div id="active-scans" class="scan-cards-grid">
+              <div class="empty-state" id="active-empty">
+                <p>No active scans</p>
+              </div>
+            </div>
+            <div style="margin-top: 14px">
+              <a href="./history.html" class="btn btn-secondary btn-sm">Go to History & Downloads</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./utils.js"></script>
+    <script src="./dashboard.js"></script>
+  </body>
+</html>

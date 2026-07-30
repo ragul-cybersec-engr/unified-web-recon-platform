@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0284c7" />
+    <title>Web-Recon - Authentication</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <div class="login-wrapper">
+      <div class="login-card auth-card">
+        <div class="login-brand">
+          <div class="login-brand-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          <span class="login-brand-name">Web-Recon</span>
+        </div>
+        <p class="login-subtitle">Login, register, or use OTP authentication</p>
+
+        <div class="auth-tabs">
+          <button type="button" class="auth-tab active" data-panel="signin-panel">Sign In</button>
+          <button type="button" class="auth-tab" data-panel="register-panel">Register</button>
+          <button type="button" class="auth-tab" data-panel="otp-panel">OTP Login</button>
+        </div>
+
+        <div class="auth-panel active" id="signin-panel">
+          <form id="login-form" autocomplete="on">
+            <div class="form-group">
+              <label for="username" class="form-label">Email</label>
+              <input
+                type="email"
+                id="username"
+                name="username"
+                class="form-input"
+                placeholder="Enter your email"
+                required
+                autocomplete="username"
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="password"
+                name="password"
+                class="form-input"
+                placeholder="Enter your password"
+                required
+                autocomplete="current-password"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-full"
+              id="login-btn"
+              style="margin-top: 8px"
+            >
+              <span id="login-btn-text">Sign In</span>
+              <span id="login-btn-spinner" class="spinner" style="display: none"></span>
+            </button>
+          </form>
+        </div>
+
+        <div class="auth-panel" id="register-panel">
+          <form id="register-form" autocomplete="on">
+            <div class="form-group">
+              <label for="register-name" class="form-label">Full Name</label>
+              <input
+                type="text"
+                id="register-name"
+                class="form-input"
+                placeholder="Enter your name"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="register-email" class="form-label">Email</label>
+              <input
+                type="email"
+                id="register-email"
+                class="form-input"
+                placeholder="Enter your email"
+                required
+              />
+            </div>
+
+            <div class="form-group">
+              <label for="register-password" class="form-label">Password</label>
+              <input
+                type="password"
+                id="register-password"
+                class="form-input"
+                placeholder="Minimum 6 characters"
+                required
+                minlength="6"
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-full"
+              id="register-btn"
+              style="margin-top: 8px"
+            >
+              <span id="register-btn-text">Create Account</span>
+              <span id="register-btn-spinner" class="spinner" style="display: none"></span>
+            </button>
+          </form>
+        </div>
+
+        <div class="auth-panel" id="otp-panel">
+          <form id="otp-form" autocomplete="off">
+            <div class="form-group">
+              <label for="otp-email" class="form-label">Registered Email</label>
+              <input
+                type="email"
+                id="otp-email"
+                class="form-input"
+                placeholder="Enter your registered email"
+                required
+              />
+            </div>
+
+            <button
+              type="button"
+              class="btn btn-secondary btn-full"
+              id="request-otp-btn"
+              style="margin-bottom: 14px"
+            >
+              Request OTP
+            </button>
+
+            <div class="form-group">
+              <label for="otp-code" class="form-label">OTP Code</label>
+              <input
+                type="text"
+                id="otp-code"
+                class="form-input"
+                placeholder="Enter 6-digit OTP"
+                minlength="4"
+                maxlength="8"
+                required
+              />
+            </div>
+
+            <button
+              type="submit"
+              class="btn btn-primary btn-full"
+              id="otp-login-btn"
+              style="margin-top: 8px"
+            >
+              <span id="otp-btn-text">Login with OTP</span>
+              <span id="otp-btn-spinner" class="spinner" style="display: none"></span>
+            </button>
+          </form>
+          <p class="auth-hint">OTP will be sent to the email if the provided email is valid</p>
+        </div>
+
+        <div class="login-divider"></div>
+        <p class="login-footer">Unified Integrated Reconnaissance Platform</p>
+      </div>
+    </div>
+
+    <script src="./utils.js"></script>
+    <script src="./auth.js"></script>
+  </body>
+</html>

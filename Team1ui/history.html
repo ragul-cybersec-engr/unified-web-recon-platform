@@ -1,0 +1,122 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#0284c7" />
+    <title>Web-Recon - History & Downloads</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="header">
+      <div class="container">
+        <div class="header-brand">
+          <div class="header-brand-icon">
+            <svg
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="2"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+            >
+              <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+            </svg>
+          </div>
+          Web-Recon
+        </div>
+        <div class="header-actions">
+          <nav class="top-nav">
+            <a href="./index.html" class="top-nav-link">Scan Dashboard</a>
+            <a href="./history.html" class="top-nav-link active">History & Downloads</a>
+          </nav>
+          <span class="header-user" id="header-user"></span>
+          <button class="btn btn-ghost btn-sm" id="logout-btn" aria-label="Sign out">
+            Logout
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <div class="container page-wrapper">
+      <div class="page-title-group">
+        <h2>Scan History</h2>
+        <p>View results, download reports (TXT/DOCX/PDF/XML), or send reports by email.</p>
+      </div>
+
+      <div class="card">
+        <div
+          class="card-header"
+          style="display: flex; align-items: center; justify-content: space-between"
+        >
+          <div>
+            <h3>Recon History</h3>
+            <p>All scan records from domain and extended modes</p>
+          </div>
+          <button class="btn btn-secondary btn-sm" id="refresh-history-btn">Refresh</button>
+        </div>
+        <div class="card-body">
+          <div class="table-wrapper">
+            <table class="table" id="history-table">
+              <thead>
+                <tr>
+                  <th>Organization</th>
+                  <th>Scan Type</th>
+                  <th>Domains</th>
+                  <th>Initiated By</th>
+                  <th>Started Date</th>
+                  <th>Status</th>
+                  <th>Actions</th>
+                </tr>
+              </thead>
+              <tbody id="history-tbody">
+                <tr id="history-empty">
+                  <td colspan="7">
+                    <div class="empty-state">
+                      <p>No scan history found yet.</p>
+                    </div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="modal-overlay" id="download-modal-overlay">
+      <div class="modal" style="max-width: 520px">
+        <h3 id="download-modal-title">Download / Email Report</h3>
+        <p id="download-modal-desc">Choose output format and optionally send by email.</p>
+        <div class="form-group">
+          <label class="form-label" for="download-format">Format</label>
+          <select class="form-input" id="download-format">
+            <option value="txt">TXT</option>
+            <option value="docx">Word (DOCX)</option>
+            <option value="pdf" selected>PDF</option>
+            <option value="xml">XML</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="download-email">Recipient Email (for send option)</label>
+          <input
+            class="form-input"
+            id="download-email"
+            type="email"
+            placeholder="you@example.com"
+          />
+        </div>
+        <div class="modal-actions modal-actions-between">
+          <button class="btn btn-secondary" id="download-modal-cancel">Close</button>
+          <div class="inline-actions">
+            <button class="btn btn-secondary" id="download-now-btn">Download</button>
+            <button class="btn btn-primary" id="send-email-btn">Send Email</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <script src="./utils.js"></script>
+    <script src="./history.js"></script>
+  </body>
+</html>

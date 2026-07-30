@@ -1,0 +1,12 @@
+fastapi
+uvicorn[standard]
+pyyaml
+passlib[bcrypt]
+pyjwt
+pydantic
+python-multipart
+pydantic[email]
+bcrypt
+python-docx
+reportlab
+dnspython
